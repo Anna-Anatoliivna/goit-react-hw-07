@@ -1,13 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
+import { apiGetAllContacts } from '../contactsOps';
 
 const INITIAL_STATE = {
-  items: [
-    { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-    { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-    { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-    { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-  ],
+  items: [ ],
   loading: false,
   error: null,
 };
@@ -25,12 +21,23 @@ const contactsSlice = createSlice({
       );
     },
   },
+  extraReducers: builder =>
+    builder
+      .addCase(apiGetAllContacts.pending, state => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(apiGetAllContacts.fulfilled, (state, action) => {
+        state.loading = false;
+        state.items = action.payload;
+      })
+      .addCase(apiGetAllContacts.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      }),
 });
 
 export const selectContacts = state => state.contacts.items;
 
-
 export const contactsReducer = contactsSlice.reducer;
 export const { addContact, deleteContact } = contactsSlice.actions;
-
-
