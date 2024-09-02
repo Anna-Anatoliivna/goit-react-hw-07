@@ -31,36 +31,4 @@ export const selectContacts = state => state.contacts.items;
 export const contactsReducer = contactsSlice.reducer;
 export const { addContact, deleteContact } = contactsSlice.actions;
 
-// export const contactsReduser = (state = INITIAL_STATE, action) => {
-//     switch (action.type) {
-//       case 'contacts/add': {
-//         return {
-//           ...state,
-//           contacts: [...state.contacts, action.payload],
-//         };
-//       }
-//       case 'contacts/del': {
-//         return {
-//           ...state,
-//           contacts: state.contacts.filter(contact => contact.id !== action.payload),
-//         };
-//       }
-//       default:
-//         return state;
-//     }
 
-// };
-
-// export const addContact = payload => {
-//   return {
-//     type: 'contacts/add',
-//     payload: payload,
-//   };
-// };
-
-// export const deleteContact = contactId => {
-//   return {
-//     type: 'contacts/del',
-//     payload: contactId,
-//   };
-// };
