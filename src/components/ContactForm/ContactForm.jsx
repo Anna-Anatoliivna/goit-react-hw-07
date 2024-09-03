@@ -30,8 +30,7 @@ export const ContactForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    console.log('hello');
-
+   
     dispatch(addContact(values));
     actions.resetForm();
   };

@@ -15,3 +15,17 @@ export const apiGetAllContacts = createAsyncThunk(
     }
   },
 );
+
+export const apiDeleteContacts = createAsyncThunk(
+  'contacts/delete',
+  async (contacId, thunkApi) => {
+    try {
+      const { data } = await axios.delete(
+        `https://66d560c3f5859a704265d358.mockapi.io/api/v1/contact/${contacId}`,
+      );
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  },
+);
