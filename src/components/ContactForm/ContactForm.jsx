@@ -3,8 +3,8 @@ import styles from './ContactForm.module.css';
 import * as Yup from 'yup';
 import { ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contacts/contactsSlice';
 import { nanoid } from 'nanoid';
+import { apiAddContacts } from '../../redux/contactsOps';
 
 const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -30,8 +30,7 @@ export const ContactForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-   
-    dispatch(addContact(values));
+       dispatch(apiAddContacts(values));
     actions.resetForm();
   };
 
