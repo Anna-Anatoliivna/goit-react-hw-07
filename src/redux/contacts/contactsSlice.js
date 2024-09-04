@@ -57,3 +57,4 @@ export const selectContacts = state => state.contacts.items;
 
 export const contactsReducer = contactsSlice.reducer;
 
+export const selectFilteredContacts = state => state.filter.filterValue;
