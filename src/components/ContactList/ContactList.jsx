@@ -4,7 +4,7 @@ import styles from './ContactList.module.css';
 import { selectContacts } from '../../redux/contacts/contactsSlice';
 import { selectNameFilter } from '../../redux/filter/filtersSlice';
 import { useEffect } from 'react';
-import { apiGetAllContacts } from '../../redux/contactsOps';
+import { fetchContacts } from '../../redux/contactsOps';
 
 export const ContactList = () => {
   const contacts = useSelector(selectContacts);
@@ -12,7 +12,7 @@ export const ContactList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(apiGetAllContacts());
+    dispatch(fetchContacts());
   }, [dispatch]);
 
   const filteredContacts = contacts.filter(contact => {

@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const apiGetAllContacts = createAsyncThunk(
-  'contacts/getAll',
+export const fetchContacts = createAsyncThunk(
+  'contacts/fetchAll',
   async (_, thunkApi) => {
     try {
       const { data } = await axios.get(
@@ -16,8 +16,8 @@ export const apiGetAllContacts = createAsyncThunk(
   },
 );
 
-export const apiDeleteContacts = createAsyncThunk(
-  'contacts/delete',
+export const deleteContact = createAsyncThunk(
+  'contacts/deleteContact',
   async (contacId, thunkApi) => {
     try {
       const { data } = await axios.delete(
@@ -30,8 +30,8 @@ export const apiDeleteContacts = createAsyncThunk(
   },
 );
 
-export const apiAddContacts = createAsyncThunk(
-  'contacts/add',
+export const addContact = createAsyncThunk(
+  'contacts/addContact',
   async (contact, thunkApi) => {
     try {
       const { data } = await axios.post(
